@@ -1,0 +1,32 @@
+/* Mouse movement link to color and size of boxes */
+
+void setup() {
+  size(650,360); 
+  noStroke(); 
+  rectMode(CENTER);
+}
+
+void draw() {
+  
+  background(255); 
+
+  // rect1 colour settings 
+  float r1 = map(mouseX, 0, width, 0, 100);
+  float g1 = map(mouseY, 0, height, 0, 100);
+  float b1 = map(mouseX + mouseY, 0, width + height, 0, 255);
+  
+  fill(r1, g1, b1, 200);
+  rect(mouseX, height/2, mouseY/3+10, mouseY/3+10);
+
+  // inversion for rect2
+  int inverseX = width-mouseX;
+  int inverseY = height-mouseY;
+  
+  // rect2 color settings
+  float r2 = map(inverseX, 0, width, 0, 200);
+  float g2 = map(inverseY, 0, height, 0, 100);
+  float b2 = map(inverseX + inverseY, 0, width + height, 0, 255);
+
+  fill(r2, g2, b2, 200);
+  rect(inverseX, height/2, (inverseY/2)+10, (inverseY/2)+10);
+}
